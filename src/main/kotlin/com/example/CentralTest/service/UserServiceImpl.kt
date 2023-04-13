@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service
 class UserServiceImpl (private val randomUserClient: RandomUserClient) : UserService{
     override fun getUser(seed: String): UserResponse {
         val result = randomUserClient.randomUser(seed).results
-        val user = result!![0]
+        if (result.isNullOrEmpty()) throw IllegalArgumentException("user is null !!")
+        val user = result[0]
         return UserResponse(
             firstName = user.name?.first,
             lastName = user.name?.last,

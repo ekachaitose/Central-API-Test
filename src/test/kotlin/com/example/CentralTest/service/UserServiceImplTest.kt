@@ -56,7 +56,7 @@ class UserServiceImplTest {
         @Test
         fun whenGetUserThenReturnNull() {
             whenever(randomUserClient.randomUser(any())).thenReturn(userRandomResponseNull)
-            Assertions.assertThrows(NullPointerException::class.java) {
+            Assertions.assertThrows(IllegalArgumentException::class.java) {
                 userServiceImpl.getUser("momo")
             }
         }
