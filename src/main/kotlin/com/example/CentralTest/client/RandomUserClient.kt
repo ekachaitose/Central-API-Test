@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam
 
 @FeignClient(
     value = "randomUser",
-    url = "\${random-user.url}",
+    url = "\${randomUser.url}",
 )
 public interface  RandomUserClient {
     @GetMapping(value = ["/api/"])
